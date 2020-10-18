@@ -17,9 +17,31 @@ namespace lzuj9f_week06
     public partial class Form1 : Form
     {
         private BindingList<RateData> Rates = new BindingList<RateData>();
+        private BindingList<string> Currencies = new BindingList<string>();
         public Form1()
         {
             InitializeComponent();
+            
+
+            var mnbService = new MNBArfolyamServiceSoapClient();
+            var request = new GetCurrenciesRequestBody();
+            var response = mnbService.GetCurrencies(request);
+            var xml = new XmlDocument();
+            var result = response.GetCurrenciesResult;
+            xml.LoadXml(result);
+            foreach (XmlElement element in xml.DocumentElement)
+            {
+
+                string currency;
+                
+                var childElement = (XmlElement)element.ChildNodes[0];
+                currency = childElement.InnerText;
+                Currencies.Add(currency);
+
+
+
+            }
+            comboBox1.DataSource = Currencies;
 
             RefreshData();
         }
@@ -62,6 +84,8 @@ namespace lzuj9f_week06
                 rate.Date = DateTime.Parse(element.GetAttribute("date"));
                 
                 var childElement = (XmlElement)element.ChildNodes[0];
+                if (childElement == null)
+                    continue;
                 rate.Currency = childElement.GetAttribute("curr");
 
                 var unit = decimal.Parse(childElement.GetAttribute("unit"));
