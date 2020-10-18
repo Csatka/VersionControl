@@ -1,4 +1,5 @@
-﻿using lzuj9f_week06.MnbServiceReference;
+﻿using lzuj9f_week06.Entities;
+using lzuj9f_week06.MnbServiceReference;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,11 +14,14 @@ namespace lzuj9f_week06
 {
     public partial class Form1 : Form
     {
+        BindingList<RateData> Rates;
         public Form1()
         {
             InitializeComponent();
 
             GetFirstHalfExchangeRates();
+
+            dataGridView1.DataSource = Rates;
         }
 
         private void GetFirstHalfExchangeRates()
