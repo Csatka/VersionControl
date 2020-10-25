@@ -10,6 +10,6 @@ namespace lzuj9f_week07.Entities
     {
         public Gender Gender { get; set; }
         public int Age { get; set; }
-        public double pDeath { get; set; }
+        public double P { get; set; }
     }
 }

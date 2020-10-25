@@ -10,6 +10,6 @@ namespace lzuj9f_week07.Entities
     {
         public int Age { get; set; }
         public int NbrOfChildren { get; set; }
-        public double pBirth { get; set; }
+        public double P { get; set; }
     }
 }

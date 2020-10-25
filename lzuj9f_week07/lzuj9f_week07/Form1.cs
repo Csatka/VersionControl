@@ -19,6 +19,7 @@ namespace lzuj9f_week07
         List<BirthProbability> BirthProbabilities = new List<BirthProbability>();
         List<DeathProbability> DeathProbabilities = new List<DeathProbability>();
         Random rng = new Random(1234);
+        
 
         public Form1()
         {
@@ -31,7 +32,7 @@ namespace lzuj9f_week07
             {
                 for (int i = 0; i < Population.Count; i++)
                 {
-
+                    SimStep(year, Population[i]);
                 }
 
                 int nbrOfMales = (from x in Population
@@ -77,7 +78,7 @@ namespace lzuj9f_week07
                     {
                         Age = int.Parse(line[0]),
                         NbrOfChildren = int.Parse(line[1]),
-                        pBirth = double.Parse(line[2])
+                        P = double.Parse(line[2])
                     });
                 }
             }
@@ -97,12 +98,38 @@ namespace lzuj9f_week07
                     {
                         Gender = (Gender)Enum.Parse(typeof(Gender), line[0]),
                         Age = int.Parse(line[1]),
-                        pDeath = double.Parse(line[2])
+                        P = double.Parse(line[2])
                     });
 
                 }
             }
             return deathProbabilities;
+        }
+
+        private void SimStep (int year, Person person)
+        {
+            if (!person.IsAlive) return;
+            byte age = (byte)(year - person.BirthYear);
+            double pDeath = (from x in DeathProbabilities
+                             where x.Gender == person.Gender && x.Age == age
+                             select x.P).FirstOrDefault();
+            if (rng.NextDouble() <= pDeath)
+                person.IsAlive = false;
+
+            if (person.IsAlive && person.Gender == Gender.Female)
+            {
+                double pBirth = (from x in BirthProbabilities
+                                 where x.Age == age
+                                 select x.P).FirstOrDefault();
+                if (rng.NextDouble() <= pBirth)
+                {
+                    Person újszülött = new Person();
+                    újszülött.BirthYear = year;
+                    újszülött.NbrOfChildren = 0;
+                    újszülött.Gender = (Gender)(rng.Next(1, 3));
+                    Population.Add(újszülött);
+                }
+            }
         }
     }
 }
