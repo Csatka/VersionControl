@@ -91,5 +91,14 @@ namespace lzuj9f_week08
                 return;
             button.BackColor = colorPicker.Color;
         }
+
+        private void btnSelectPresent_Click(object sender, EventArgs e)
+        {
+            Factory = new PresentFactory
+            {
+                RibbonColor = btnRibbonColor.BackColor,
+                BoxColor = btnBoxColor.BackColor
+            };
+        }
     }
 }

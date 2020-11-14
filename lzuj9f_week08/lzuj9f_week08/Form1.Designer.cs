@@ -36,6 +36,9 @@
             this.btnSelectBall = new System.Windows.Forms.Button();
             this.lblbNext = new System.Windows.Forms.Label();
             this.btnBallColor = new System.Windows.Forms.Button();
+            this.btnSelectPresent = new System.Windows.Forms.Button();
+            this.btnRibbonColor = new System.Windows.Forms.Button();
+            this.btnBoxColor = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // mainPanel
@@ -70,7 +73,7 @@
             // 
             // btnSelectBall
             // 
-            this.btnSelectBall.Location = new System.Drawing.Point(114, 29);
+            this.btnSelectBall.Location = new System.Drawing.Point(114, 28);
             this.btnSelectBall.Name = "btnSelectBall";
             this.btnSelectBall.Size = new System.Drawing.Size(75, 75);
             this.btnSelectBall.TabIndex = 2;
@@ -81,7 +84,7 @@
             // lblbNext
             // 
             this.lblbNext.AutoSize = true;
-            this.lblbNext.Location = new System.Drawing.Point(218, 53);
+            this.lblbNext.Location = new System.Drawing.Point(327, 58);
             this.lblbNext.Name = "lblbNext";
             this.lblbNext.Size = new System.Drawing.Size(68, 13);
             this.lblbNext.TabIndex = 3;
@@ -97,11 +100,44 @@
             this.btnBallColor.UseVisualStyleBackColor = false;
             this.btnBallColor.Click += new System.EventHandler(this.btnColor_Click);
             // 
+            // btnSelectPresent
+            // 
+            this.btnSelectPresent.Location = new System.Drawing.Point(208, 28);
+            this.btnSelectPresent.Name = "btnSelectPresent";
+            this.btnSelectPresent.Size = new System.Drawing.Size(75, 75);
+            this.btnSelectPresent.TabIndex = 5;
+            this.btnSelectPresent.Text = "PRESENT";
+            this.btnSelectPresent.UseVisualStyleBackColor = true;
+            this.btnSelectPresent.Click += new System.EventHandler(this.btnSelectPresent_Click);
+            // 
+            // btnRibbonColor
+            // 
+            this.btnRibbonColor.BackColor = System.Drawing.Color.Yellow;
+            this.btnRibbonColor.Location = new System.Drawing.Point(208, 109);
+            this.btnRibbonColor.Name = "btnRibbonColor";
+            this.btnRibbonColor.Size = new System.Drawing.Size(75, 23);
+            this.btnRibbonColor.TabIndex = 6;
+            this.btnRibbonColor.UseVisualStyleBackColor = false;
+            this.btnRibbonColor.Click += new System.EventHandler(this.btnColor_Click);
+            // 
+            // btnBoxColor
+            // 
+            this.btnBoxColor.BackColor = System.Drawing.Color.Cyan;
+            this.btnBoxColor.Location = new System.Drawing.Point(208, 139);
+            this.btnBoxColor.Name = "btnBoxColor";
+            this.btnBoxColor.Size = new System.Drawing.Size(75, 23);
+            this.btnBoxColor.TabIndex = 7;
+            this.btnBoxColor.UseVisualStyleBackColor = false;
+            this.btnBoxColor.Click += new System.EventHandler(this.btnColor_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 461);
+            this.Controls.Add(this.btnBoxColor);
+            this.Controls.Add(this.btnRibbonColor);
+            this.Controls.Add(this.btnSelectPresent);
             this.Controls.Add(this.btnBallColor);
             this.Controls.Add(this.lblbNext);
             this.Controls.Add(this.btnSelectBall);
@@ -125,6 +161,9 @@
         private System.Windows.Forms.Button btnSelectBall;
         private System.Windows.Forms.Label lblbNext;
         private System.Windows.Forms.Button btnBallColor;
+        private System.Windows.Forms.Button btnSelectPresent;
+        private System.Windows.Forms.Button btnRibbonColor;
+        private System.Windows.Forms.Button btnBoxColor;
     }
 }
 
